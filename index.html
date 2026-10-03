@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassPulse - Student Feedback</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7f6;
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        p.subtitle {
+            color: #7f8c8d;
+            margin-bottom: 25px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            margin: 12px 0;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            color: white;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .btn:active {
+            transform: scale(0.98);
+        }
+        .btn-following { background-color: #27ae60; }
+        .btn-confused { background-color: #e74c3c; }
+        .btn-fast { background-color: #f39c12; }
+        .btn-question { background-color: #3498db; }
+        
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #bdc3c7;
+            border-radius: 8px;
+            resize: vertical;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        hr {
+            margin: 25px 0;
+            border: 0;
+            border-top: 1px solid #ecf0f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ClassPulse</h1>
+        <p class="subtitle">Give anonymous feedback to your professor</p>
+
+        <!-- Quick Feedback Form -->
+        <form action="/cgi-bin/submit_feedback.py" method="POST">
+            <button type="submit" name="feedback_type" value="Following Along" class="btn btn-following">Following Along 👍</button>
+            <button type="submit" name="feedback_type" value="Confused" class="btn btn-confused">Confused 😕</button>
+            <button type="submit" name="feedback_type" value="Going Too Fast" class="btn btn-fast">Going Too Fast 🏃</button>
+        </form>
+
+        <hr>
+
+        <!-- Text Question Form -->
+        <form action="/cgi-bin/submit_feedback.py" method="POST">
+            <textarea name="question_text" rows="4" placeholder="Type your anonymous question here..." required></textarea>
+            <button type="submit" name="feedback_type" value="Question" class="btn btn-question">Submit Question 💬</button>
+        </form>
+    </div>
+</body>
+</html>
